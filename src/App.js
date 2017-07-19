@@ -1,20 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql, QueryRenderer } from 'react-relay';
+import environment from './relayEnvironment.js';
+import User from './User.js';
+
+const query = graphql`
+  query AppQuery {
+    viewer {
+      name
+      ...UserFragment
+    }
+  }
+`;
 
 const App = () =>
   <QueryRenderer
-    query={graphql`
-      query {
-        viewer {
-          name
-        }
-      }
-    `}
+    environment={environment}
+    query={query}
     variables={{}}
     render={({ error, props }) => {
-      if (error) return <div>Error</div>;
+      if (error) return <div>Error {error.toString()}</div>;
       if (!props) return <div>Loading</div>;
-      return <div>{JSON.stringify(props)}</div>
+      return (
+        <div>
+          <User data={props.viewer} />
+        </div>
+      );
     }}
   />;
 
