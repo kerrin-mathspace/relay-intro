@@ -10,6 +10,7 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type UserFragment = {|
   +name: ?string;
+  +friends: ?$ReadOnlyArray<?{| |}>;
 |};
 */
 
@@ -28,9 +29,20 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "FriendsListFragment",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "Friend",
+      "name": "friends",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "FriendFragment",
+          "args": null
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "User"

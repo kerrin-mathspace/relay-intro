@@ -7,5 +7,5 @@
   }
 
   type Friend {
-    namenew: String
+    name: String
   }

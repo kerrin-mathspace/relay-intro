@@ -7,7 +7,7 @@ import Friend from './Friend.js';
 const User = ({ data }) => (
   <div>
     <h1>{data.name}</h1>
-    <Friend data={data} />
+    <Friend data={data.friends} />
   </div>
 );
 
@@ -15,7 +15,7 @@ export default createFragmentContainer(User, graphql`
   fragment UserFragment on User {
     name
     friends {
-      ...Friend
+      ...FriendFragment
     }
   }
 `);

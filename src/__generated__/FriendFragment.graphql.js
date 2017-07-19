@@ -8,16 +8,18 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type FriendFragment = {|
+export type FriendFragment = $ReadOnlyArray<{|
   +name: ?string;
-|};
+|}>;
 */
 
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "plural": true
+  },
   "name": "FriendFragment",
   "selections": [
     {

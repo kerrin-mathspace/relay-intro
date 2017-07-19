@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c5ca84e28058e3ee04ed5aafc348aab9
+ * @relayHash 0794cdd2db854e1d4a4932a0d7867771
  */
 
 /* eslint-disable */
@@ -27,10 +27,6 @@ query AppQuery {
 
 fragment UserFragment on User {
   name
-  ...FriendsListFragment
-}
-
-fragment FriendsListFragment on User {
   friends {
     ...FriendFragment
   }
@@ -128,7 +124,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AppQuery {\n  viewer {\n    name\n    ...UserFragment\n  }\n}\n\nfragment UserFragment on User {\n  name\n  ...FriendsListFragment\n}\n\nfragment FriendsListFragment on User {\n  friends {\n    ...FriendFragment\n  }\n}\n\nfragment FriendFragment on Friend {\n  name\n}\n"
+  "text": "query AppQuery {\n  viewer {\n    name\n    ...UserFragment\n  }\n}\n\nfragment UserFragment on User {\n  name\n  friends {\n    ...FriendFragment\n  }\n}\n\nfragment FriendFragment on Friend {\n  name\n}\n"
 };
 
 module.exports = batch;

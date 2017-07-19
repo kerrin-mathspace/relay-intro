@@ -4,18 +4,17 @@ import { graphql, createFragmentContainer } from 'react-relay';
 import type { FriendFragment } from './__generated__/FriendFragment.graphql.js';
 
 const Friend = ({ data }: { data: FriendFragment }) => {
-  debugger;
   return (
-    <li>
-      {data.name}
-    </li>
+    <div>
+      {data.map(f => <div>{f.name}</div>)}
+    </div>
   );
 };
 
 export default createFragmentContainer(
   Friend,
   graphql`
-  fragment FriendFragment on Friend {
+  fragment FriendFragment on Friend @relay(plural: true) {
     name
   }
 `,
