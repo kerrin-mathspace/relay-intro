@@ -1,0 +1,11 @@
+  type Query {
+    viewer: User
+  }
+  type User {
+    name: String
+    friends: [Friend]
+  }
+
+  type Friend {
+    name: String
+  }
